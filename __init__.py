@@ -22,7 +22,7 @@ For more information please visit www.github.com/lorcajheeney/tkmultikey to see 
 import types
 def config(widget):
     """Configurates the widget argument to add properties and override methods allowing additional functionality to be built into it."""
-    widget.keyhistory = [
+    widget.keyhistory = []
     widget.activekeys = {}
     def __handle_key_press(event):
         """Private function which handles tkinter key presses by adding them onto queue."""
