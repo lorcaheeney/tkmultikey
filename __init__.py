@@ -44,7 +44,6 @@ def config(widget):
         """Private function which overrides widget's update function, checks to see if any matching key presses then runs standard update function."""
         for action, keys in widget.activekeys.items():
             if all([(key in widget.keyhistory) for key in keys]) and len(widget.keyhistory) > 0:
-                print(widget.keyhistory,widget.activekeys)
                 try:
                     action(keys)
                 except TypeError: action()
