@@ -3,12 +3,12 @@
 A simple python library to allow multi-key combinations to be bound in python. It aims to do this in the most beginner-friendly way by overriding a tkinter widgets original bind function with a custom version to allow multiple keys to be specified as the condition for a function's execution.
 ## Installation
 Installation of the library is incredibly simple using either command line or the browser.
-#### Command-line:
+##### Command-line:
 - Download the library's source file using the following command **in the directory of your python program**.
 ```
 git clone http://www.github.com/lorcajheeney/tkmultikey
 ```
-#### Browser:
+##### Browser:
 - Visit http://www.github.com/lorcajheeney/tkmultikey on your browser.
 - Click the `clone or download` button.
 - Click `download zip` and store the download **in the directory of your python program**.
