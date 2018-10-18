@@ -37,7 +37,7 @@ def config(widget):
     def __handle_add_keys(self,keysequence, action):
         """Private function which overrides widget's bind function, handles the user adding key binds by adding them onto an active keys structure."""
         keys = list(keysequence.split("+"))
-        widget.activekeys[action] = keys
+        widget.activekeys[action] = list(map(lambda k : k[1:-1] if k[0] == "<" and k[-1] == ">" else k,keys))
     widget.bind = types.MethodType(__handle_add_keys,widget)
     windowupdate = widget.update
     def __handle_win_update(self):
