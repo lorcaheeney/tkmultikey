@@ -13,6 +13,7 @@ git clone http://www.github.com/lorcajheeney/tkmultikey
 - Click the `clone or download` button.
 - Click `download zip` and store the download **in the directory of your python program**.
 - Extract the downloaded zip to the current directory.
+- Rename the new folder to 'tkmultikey'.
 ## Use
 The library is easily included in the any python program via the following import statement.
 ```python
@@ -25,6 +26,34 @@ import tkmultipy
 
 window = tkinter.Tk()
 tkmultipy.config(window)
+```
+# Functionality
+The main feature of the library is binding multiple key combinations but single key combinations will work aswell.
+```python
+window.bind("<Left>", move_left)
+```
+For multiple keys, use the '+' operator to concatanate their key symbols.
+```python
+window.bind("W+A+S+D", move_every_direction)
+```
+A special argument that can be passed into the bind method is "ALL" for the key sequence, matching to any key that is pressed.
+```python
+window.bind("ALL", start_game)
+```
+The function passed in as the second argument can take either 1 or 0 argument. If it has no arguments it is simply run if it has 1 a list of the key symbols of all keys currently being pressed is passed as the argument.This feature is shown below in an example project to print the list of all keys being pressed.
+```python
+import tkinter
+import tkmultipy
+
+window = tkinter.Tk()
+tkmultipy.config(window)
+
+def print_keys(pressedkeys):
+    print(pressedkeys)
+
+window.bind("ALL",print_keys)
+while True:
+    window.update()
 ```
 **NOTE : Calling `config` on an instance will override that instance's bind and update methods, this may lead to undefined behaviour if those methods are not used correctly even if the use would be correct on the original functions.**
 ## Example
