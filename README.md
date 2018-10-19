@@ -1,7 +1,8 @@
 # tkmultikey
-## Overview
-A simple python library to allow multi-key combinations to be bound in python. It aims to do this in the most beginner-friendly way by overriding a tkinter widgets original bind function with a custom version to allow multiple keys to be specified as the condition for a function's execution.
-## Installation
+# Overview
+A simple python library to allow multi-key combinations to be bound in python. It aims to do this in the most beginner-friendly way by overriding a tkinter widget's original bind function with a custom version to allow multiple keys to be specified as the condition for a function's execution.
+**NOTE: `tkmultikey` has been tested on Python 3.4.0 to Python 3.7.0, while likely to work other versions of python, it cannot be guaranteed.**
+# Installation
 Installation of the library is incredibly simple using either command line or the browser.
 ##### Command-line:
 - Download the library's source file using the following command **in the directory of your python program**.
@@ -13,8 +14,8 @@ git clone http://www.github.com/lorcajheeney/tkmultikey
 - Click the `clone or download` button.
 - Click `download zip` and store the download **in the directory of your python program**.
 - Extract the downloaded zip to the current directory.
-- Rename the new folder to 'tkmultikey'.
-## Use
+- Rename the new folder to `tkmultikey`.
+# Use
 The library is easily included in the any python program via the following import statement.
 ```python
 import tkmultipy
@@ -40,7 +41,7 @@ A special argument that can be passed into the bind method is "ALL" for the key 
 ```python
 window.bind("ALL", start_game)
 ```
-The function passed in as the second argument can take either 1 or 0 argument. If it has no arguments it is simply run if it has 1 a list of the key symbols of all keys currently being pressed is passed as the argument.This feature is shown below in an example project to print the list of all keys being pressed.
+The function passed to the bind method to be called can take either 1 or no arguments. If it accepts one argument, without raising a `TypeError`, then a list of all the symbols of the keys currently being pressed is passed to it.
 ```python
 import tkinter
 import tkmultipy
@@ -56,7 +57,7 @@ while True:
     window.update()
 ```
 **NOTE : Calling `config` on an instance will override that instance's bind and update methods, this may lead to undefined behaviour if those methods are not used correctly even if the use would be correct on the original functions.**
-## Example
+# Example
 Shown below, is an example project which uses `tkmultipy` to  increase the size of the window when the space bar and right arrow key is pressed.
 ```python
 import tkinter
