@@ -34,19 +34,28 @@ def config(widget):
             widget.keyhistory.pop(widget.keyhistory.index(event.keysym))
     widget.bind("<KeyPress>",__handle_key_press)
     widget.bind("<KeyRelease>",__handle_key_release)
+    def __split_input_keys(keysequence):
+    	"""Private function to split key sequence into list and remove any <> brackets to handle tkinter compatibility."""
+    	return list(map(lambda k: k[1:-1] if k[0]== "<" and k[-1] == ">" else k, list(keysequence.split("+"))))
     def __handle_add_keys(self,keysequence, action):
         """Private function which overrides widget's bind function, handles the user adding key binds by adding them onto an active keys structure."""
-        keys = list(keysequence.split("+"))
-        widget.activekeys[action] = list(map(lambda k : k[1:-1] if k[0] == "<" and k[-1] == ">" else k,keys))
+        widget.activekeys[action] = __split_input_keys(keysequence)
     widget.bind = types.MethodType(__handle_add_keys,widget)
+    def __handle_remove_keys(self, keysequence):
+        """Private function which overrides widget's unbind function, handles the user removing a key sequence by removing it from the active keys structure."""
+        for action in list(widget.activekeys.keys()):
+            if widget.activekeys[action] == __split_input_keys(keysequence):
+                del widget.activekeys[action]
+    widget.unbind = types.MethodType(__handle_remove_keys,widget)
     windowupdate = widget.update
     def __handle_win_update(self):
         """Private function which overrides widget's update function, checks to see if any matching key presses then runs standard update function."""
-        for action, keys in widget.activekeys.items():
-            if all([(key in widget.keyhistory) for key in keys]) and len(widget.keyhistory) > 0:
-                try:
-                    action(keys)
-                except TypeError: action()
+        if len(widget.keyhistory) > 0:
+            for action in list(widget.activekeys.keys()):
+                if all([(key in widget.activekeys[action]) for key in widget.keyhistory]) or ("ALL" in widget.activekeys[action]):
+                    try:
+                        action(widget.keyhistory)
+                    except TypeError: action()
         windowupdate()
     widget.update = types.MethodType(__handle_win_update, widget)
         
