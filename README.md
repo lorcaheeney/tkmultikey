@@ -34,7 +34,7 @@ The main feature of the library is binding multiple key combinations but single 
 ```python
 window.bind("<Left>", move_left)
 ```
-For multiple keys, use the '+' operator to concatanate their key symbols.
+For multiple keys, use the `+` operator to concatanate their key symbols.
 ```python
 window.bind("W+A+S+D", move_every_direction)
 ```
@@ -57,7 +57,7 @@ window.bind("ALL",print_keys)
 while True:
     window.update()
 ```
-Key sequences can also be unbinded so that if they are pressed again their associated function is not called. This is done using a widget's overriden unbind method and does not require the function be passed in again only the key sequence.
+Key sequences can also be unbinded so that if they are pressed again their associated function is not called. This is done using a widget's overridden unbind method and does not require the function be passed in again only the key sequence.
 ```python
 window.unbind("W+A+S+D")
 ```
