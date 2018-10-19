@@ -57,7 +57,7 @@ window.bind("ALL",print_keys)
 while True:
     window.update()
 ```
-Key sequences can also be unbinded so that if they are pressed again their associated function is not called. This is done using a widget's overridden unbind method and does not require the function be passed in again only the key sequence.
+Key sequences can also be unbinded so that if they are pressed again their associated function is not called. This is done using a widget's overridden unbind method and does not require the function be passed in again, only the key sequence.
 ```python
 window.unbind("W+A+S+D")
 ```
