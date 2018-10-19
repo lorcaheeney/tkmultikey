@@ -1,7 +1,8 @@
 # tkmultikey
 # Overview
 A simple python library to allow multi-key combinations to be bound in python. It aims to do this in the most beginner-friendly way by overriding a tkinter widget's original bind function with a custom version to allow multiple keys to be specified as the condition for a function's execution.
-**NOTE: `tkmultikey` has been tested on Python 3.4.0 to Python 3.7.0, while likely to work other versions of python, it cannot be guaranteed.**
+
+**`tkmultikey` has been tested on Python 3.4.0 to Python 3.7.0, while likely to work other versions of python, it cannot be guaranteed.**
 # Installation
 Installation of the library is incredibly simple using either command line or the browser.
 ##### Command-line:
@@ -55,6 +56,10 @@ def print_keys(pressedkeys):
 window.bind("ALL",print_keys)
 while True:
     window.update()
+```
+Key sequences can also be unbinded so that if they are pressed again their associated function is not called. This is done using a widget's overriden unbind method and does not require the function be passed in again only the key sequence.
+```python
+window.unbind("W+A+S+D")
 ```
 **NOTE : Calling `config` on an instance will override that instance's bind and update methods, this may lead to undefined behaviour if those methods are not used correctly even if the use would be correct on the original functions.**
 # Example
